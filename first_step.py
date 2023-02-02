@@ -14,4 +14,4 @@ salary.remove(max(salary))
 salary.remove(min(salary))
 print (sum(salary)/len(salary))
 
-##
+#
