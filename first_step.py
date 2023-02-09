@@ -383,3 +383,45 @@ class Node:
                     col=0
         return new_mat
     print(reshape())
+#1768. Merge Strings Alternately
+    def merge_string():
+        word1 = 'ab'
+        word2 = 'pqrs'
+        print("1768. Merge Strings Alternately")
+        merged_string = ""
+
+        for i in range(max(len(word1), len(word2))):
+            if i < len(word1):
+                merged_string += word1[i]
+            if i < len(word2):
+                merged_string += word2[i]
+        return merged_string
+    print(merge_string())
+#1678. Goal Parser Interpretation
+    def interpred():
+        print("1678. Goal Parser Interpretation")
+        command = 'G()(al)'
+        #result = ""
+        newstr = command.replace('()','o')
+        return newstr.replace('(al)','al')
+        """
+        for char in command:
+            if char == "G":
+                result += "G"
+            elif char == "()":
+                result += "o"
+            elif  char == "(al)":
+                result += "al"
+        return result
+        """
+    print(interpred())
+#389. Find the Difference
+    def addedLetter():
+        print("389. Find the Difference")
+        s = 'abcd'
+        t = 'abcde'
+        for i in range(len(s)):
+            s[i] not in t
+        return t[i]
+
+    print(addedLetter())
