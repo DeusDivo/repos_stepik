@@ -420,8 +420,52 @@ class Node:
         print("389. Find the Difference")
         s = 'abcd'
         t = 'abcde'
-        for i in range(len(s)):
-            s[i] not in t
-        return t[i]
+        """
+        counter_s = Counter(s)
+        counter_t = Counter(t)
+        counter_result = counter_t-counter_s
+        for key,val in counter_result.items():
+            if val==1:
+                return key
 
+        for i in range(len(s)):
+            if s[i] not in t:
+                return t[i]
+        """
     print(addedLetter())
+#1309. Decrypt String from Alphabet to Integer Mapping
+    def freqAlfabets():
+        print("1309. Decrypt String from Alphabet to Integer Mapping")
+        s = '10#11#12#'#input_2 1326#
+        result =""
+        i =0
+        while i< len(s):
+            if i+2 <len(s) and s[i+2] =='#':
+                result += chr(int(s[i:i+2])+96)
+                i+=3
+            else:
+                result+= chr(int(s[i])+96)
+                i+= 1
+        return result
+    print(freqAlfabets())
+#953. Verifying an Alien Dictionary
+    def isAleanSort():
+        words = ["hello","leetcode"]
+        order = "hlabcdefgijkmnopqrstuvwxyz"
+        print ("953. Verifying an Alien Dictionary")
+        order_index = {c: i for i, c in enumerate(order)}
+
+        for i in range(len(words)-1):
+            word1 = words[i]
+            word2 = words[i+1]
+
+        for k in range(min(len(word1), len(word2))):
+            if word1[k]!=word2[k]:
+                if order_index[word1[k]]>order_index[word2[k]]:
+                    return False
+                break
+            else:
+                if len(word1)>len(word2):
+                    return False
+        return True
+    print(isAleanSort())
