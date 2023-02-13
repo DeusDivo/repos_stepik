@@ -469,3 +469,71 @@ class Node:
                     return False
         return True
     print(isAleanSort())
+#1290. Convert Binary Number in a Linked List to Integer
+class ListNode:
+    def __init__(self,x):
+        self.val = x
+        self.next = None
+class solution_1290:
+    def getDecima(self,head:ListNode) -> int:
+        print("1290. Convert Binary Number in a Linked List to Integer")
+        head = [1,0,1]
+        decima_value = 0
+        while head != None:
+            decima_value = (decima_value<<1)| head.val
+            head = head.next
+        return decima_value
+"""
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def middleNode(self):
+        slow_ptr = self.head
+        fast_ptr = self.head
+
+        if self.head is not None:
+            while (fast_ptr is not None and fast_ptr.next is not None):
+                fast_ptr = fast_ptr.next.next
+                slow_ptr = slow_ptr.next
+            return slow_ptr.data
+"""
+#
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+    def  findMiddleNode(head):
+        slow = head
+        fast = head
+
+        while (fast is not None and fast.next is not None):
+            slow = slow.next
+            fast = fast.next
+            return slow
+        print(slow)
+class treenode:
+    def __init__(self) -> None:
+        self.val = val
+        self.left = left
+        self.righ = right
+class solut:
+    def maxDepth():
+        if root is None:
+            return
+        else:
+            lDepth = self.maxDepth(root.left)
+            rDepth = self.maxDepth(root.righ)
+        if (lDepth > rDepth):
+            return lDepth+1
+        else:
+            return rDepth+1
+    def sumofleft():
+        if not root:
+            return 0
+            if root.left and not root.left.left and not root.left.right:
+                return root.left.val +self.sumofleft(root.righ)
+            return self.sumoleft(root.left)+ self.sumofleft(root.right)
