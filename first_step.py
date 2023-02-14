@@ -1,4 +1,3 @@
-
 #1523. Count Odd Numbers in an Interval Range
 class Solution(object):
     def countOdds():
@@ -515,12 +514,11 @@ class Node:
             fast = fast.next
             return slow
         print(slow)
-class treenode:
+#
     def __init__(self) -> None:
         self.val = val
         self.left = left
         self.righ = right
-class solut:
     def maxDepth():
         if root is None:
             return
@@ -537,3 +535,226 @@ class solut:
             if root.left and not root.left.left and not root.left.right:
                 return root.left.val +self.sumofleft(root.righ)
             return self.sumoleft(root.left)+ self.sumofleft(root.right)
+ #
+    def sumOfLeftLeaves():
+        root = [3,9,20,null,null,15,7]
+        s, ans = deque([(root, False)]), 0
+        while s:
+            cur, isLeft = s.pop()
+            if not cur.left and not cur.right and isLeft:
+                ans = ans + cur.val
+            if cur.right:
+                s.append((cur.right, False))
+            if cur.left:
+                s.append((cur.left, True))
+        return ans
+    def sortByBits():
+        arr = [0,1,2,3,4,5,6,7,8]
+        return sorted(arr, key = lambda x: (bin(x).count('1'), x))
+    print(sortByBits())
+#   242. Valid Anagram
+    def isAnagram():
+        print ("242. Valid Anagram")
+        s = "anagram"
+        t = "nagaram"
+        s_list = list(s)
+        t_list = list(t)
+
+        s_list.sort()
+        t_list.sort()
+
+        if s_list == t_list:
+            return True
+        return False
+    print(isAnagram())
+#v217. Contains Duplicate
+    def contains():
+        print("217. Contains Duplicate")
+        nums = [1,2,3,1]
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
+    print(contains())
+#54. Spiral Matrix
+    def spiralMatrix():
+        matrix = [[1,2,3],[4,5,6],[7,8,9]]
+        print("54. Spiral Matrix")
+
+        result = []
+        while matrix:
+            result+= matrix.pop(0)
+            matrix = list(zip(*matrix))[::-1]
+        return result
+    print(spiralMatrix())
+#1706. Where Will the Ball Fall
+    def solve():
+
+        grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]
+        n =5
+        print ("1706. Where Will the Ball Fall")
+        answer = [-1]*n
+
+        for i in range(n):
+            x,y =0, i
+            while x <len(grid) and y <len(grid[0]):
+                if grid[x][y] == 1:
+                    y += 1
+                elif grid[x][y] == -1:
+                    y -= 1
+                x+=1
+            if y>=0 and y <len(grid[0]):
+                answer[i] = y
+            return answer
+    print (solve())
+#14 Longest Common Prefix
+    def longest():
+        strs = ["14 flower","flow","flight"]
+        print('Longest Common Prefix')
+        if not strs:
+            return ""
+
+        shortest_str = min(strs,key=len)
+
+        for i, ch in enumerate(shortest_str):
+            for other in strs:
+                if other[i]!=ch:
+                    return shortest_str[:i]
+        return shortest_str
+    print(longest())
+#43. Multiply Strings
+    def multiply():
+        num1 = 2
+        num2 = 3
+        print("43. Multiply Strings")
+        result = int(num1)*int(num2)
+        return str(result)
+    print(multiply())
+#896. Monotonic Array
+    def isMonotonic():
+        nums = [1,2,2,3]
+        print('896. Monotonic Array')
+        increasing = decreasing = True
+        for i in range(len(nums)-1):
+            if nums[i]>nums[i+1]:
+                increasing = False
+            if nums[i]< nums[i+1]:
+                decreasing = False
+        return increasing or decreasing
+    print(isMonotonic())
+#28. Find the Index of the First Occurrence in a String
+    def find_needle():
+        haystack = "sadbutsad"
+        needle = "sad"
+        print('28. Find the Index of the First Occurrence in a String')
+        for i in range(len(haystack)):
+            if haystack[i:i+len(needle)]==needle:
+                return i
+        return -1
+    print(find_needle())
+#34. Find First and Last Position of Element in Sorted Array
+    def find_first():
+        print("34. Find First and Last Position of Element in Sorted Array")
+        nums =[5,7,7,8,8,10]
+        target = 8
+        star_index = -1
+        end_index = -1
+        left = 0
+        right = len(nums)-1
+
+        while left <= right:
+            mid = (left +right)//2
+            if nums[mid] == target:
+                star_index = mid
+                right = mid - 1
+            elif nums[mid]<target:
+                left = mid +1
+            else:
+                right = mid - 1
+
+        left = 0
+        right = len(nums) -1
+
+        while left <= right:
+            mid = (left+right)//2
+
+            if nums[mid] == target:
+                end_index = mid
+                left = mid +1
+
+            elif nums[mid]<target:
+                left = mid + 1
+            else:
+                right = mid -1
+        return [star_index,end_index]
+    print(find_first())
+#33. Search in Rotated Sorted Array
+    def search_rotate():
+        print("33. Search in Rotated Sorted Arra")
+        nums = [4,5,6,7,0,1,2]
+        target = 0
+        left = 0
+        right = len(nums)-1
+
+        while left <= right:
+            mid = (left+right)//2
+            if nums[mid] == target:
+                return mid
+            if nums[left] <= nums[mid]:
+                if nums[left]<=target<nums[mid]:
+                    right = mid - 1
+                else:
+                    left = mid +1
+            else:
+                if nums[mid]<target<=nums[right]:
+                    left = mid-1
+                else:
+                    rigth = mid -1
+        return -1
+    print(search_rotate())
+#74. Search a 2D Matrix
+    def search_matrix():
+        matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]]
+        target = 3
+        print ("74. Search a 2D Matrix")
+
+        if not matrix or not matrix[0]:
+            return False
+
+        m,n = len(matrix), len(matrix[0])
+        left,right = 0 , m*n-1
+
+        while left <= right:
+            mid = (left + right)//2
+            row,col = mid//n, mid%n
+
+            if matrix[row][col] == target:
+                return True
+
+            elif matrix[row][col] < target:
+                left = mid + 1
+            else:
+                right = mid-1
+        return False
+    print(search_matrix())
+#2468. Split Message Based on Limit
+    def split_message():
+        print('2468. Split Message Based on Limit')
+        message = "this is really a very awesome message"
+        limit = 9
+        parts = []
+        part_count = 0
+
+        while message:
+            part_count += 1
+            if len(message)<= limit:
+                parts.append(message + f"<{part_count}/{part_count}>")
+                break
+            else:
+                part = message[:limit - len(str(part_count))-2]+f"<{part_count}/"
+                message = message[limit-len(str(part_count))-2:]
+                parts.append(part)
+        return parts
+    print(split_message())
