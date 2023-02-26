@@ -758,3 +758,275 @@ class Node:
                 parts.append(part)
         return parts
     print(split_message())
+#153. Find Minimum in Rotated Sorted Array
+    def findMin():
+        print('153. Find Minimum in Rotated Sorted Array')
+        nums = [3,4,5,1,2]
+        min = nums[0]
+
+        for i in range(1,len(nums)):
+            if nums[i]<min:
+                min = nums[i]
+        return min
+    print(findMin())
+#162. Find Peak Element
+    def findpeak():
+        print('162. Find Peak Element')
+        nums = [1,2,3,1]
+
+        for i in range(len(nums)):
+            if (i == 0 or nums[i]>nums[i-1]) and (i == len(nums)-1 or nums[i]>nums[i+1]):
+                return i
+        return -1
+    print(findpeak())
+#989. Add to Array-Form of Integer
+    def add_k():
+        print('989. Add to Array-Form of Integer')
+        nums =[1,2,0,0]
+        k = 34
+
+        result = []
+        carry = 0
+
+        for i in range(len(nums)-1,0,-1):
+            curr_sum = nums[i] + k + carry
+            result.append(curr_sum%10)
+            carry  =curr_sum//10
+
+        if carry > 0:
+            result.append(carry)
+
+        return result[::-1]
+
+    print(add_k())
+#67. Add Binary
+    def add_binar():
+        print("67. Add Binary")
+        a = "11"
+        b = "1"
+        return (bin(a,2))
+        """
+        result = ""
+        carry =0
+        i = len(a)-1
+        j = len(b)-1
+
+        while i>=0 or j >=0:
+            sum = carry
+            if i>=0:
+                sum +=int(a[i])
+            if j >= 0:
+                sum += int(b[j])
+
+            result += str(sum%2)
+            carry = sum//2
+
+            i-=1
+            j-+1
+        if carry !=0:
+            result +=str(carry)
+        return result[::-1]
+    """
+    #print(add_binar())
+#110. Balanced Binary Tree
+#459. Repeated Substring Pattern
+    def repeatedSub():
+        print('459. Repeated Substring Pattern')
+        s = "abab"
+        n =len(s)
+
+        for i in range (n//2):
+            curr_len = i+1
+            prev_str = s[0:curr_len]
+            curr_str = s[curr_len:2*curr_len]
+
+        while curr_str == prev_str and 2 * curr_len <=n:
+            prev_str = curr_len
+            curr_len = 2 *curr_len
+            curr_len=s[curr_len:2*curr_len]
+        if (2*curr_len == n and prev_str == curr_len):
+            return True
+        return False
+    print(repeatedSub())
+#150. Evaluate Reverse Polish Notation
+    def evaluate_rpn():
+        tokens = ["4","13","5","/","+"]
+        print('150. Evaluate Reverse Polish Notation')
+        stack = []
+
+        for token in tokens:
+            if token in ['+','-','*','/']:
+                b = stack.pop()
+                a = stack.pop()
+
+                if token =='+':
+                    stack.append(a+b)
+                elif token == '-':
+                    stack.append(a-b)
+                elif token == '*':
+                    stack.append(a*b)
+                else:
+                    token == '/'
+                    stack.append(int(a/b))
+            else:
+                stack.append(int(token))
+        return stack[0]
+    print(evaluate_rpn())
+#66. Plus One
+    def incrementInteger():
+        print('66. Plus One')
+        carry = 1
+        digits = [1,2,3]
+
+        for i in range(len(digits)-1,-1,-1):
+            digits[i] += carry
+            if digits[i] == 10:
+                digits[i] = 0
+                carry = 1
+            else:
+                carry = 0
+
+            if carry == 1:
+                digits.insert(0,1)
+            return digits
+    print(incrementInteger())
+#43. Multiply Strings
+    def multiply():
+        print('43. Multiply Strings')
+        num1 = '2'
+        num2 = '3'
+
+        return str(int(num1)*int(num2))
+    print(multiply())
+#739. Daily Temperatures
+    def dailyTemperatures():
+        print("739. Daily Temperatures")
+        temp = [73,74,75,71,69,72,76,73]
+        answer = [0]*len(temp)
+        stack =[]
+
+        for i, t in enumerate(temp):
+            while stack and temp[stack[-1]] < t:
+                curr_i = stack.pop()
+                answer[curr_i] = i - curr_i
+            stack.append(i)
+        return answer
+    print(dailyTemperatures())
+#58. Length of Last Word
+    def last_words():
+        print('58. Length of Last Word')
+        s = "Hello word"
+        word = s.split()
+        s1 = len(word[-1])
+        return s1
+#48. Rotate Image
+    def rotate_image():
+        print('48. Rotate Image')
+        matrix = [[1,2,3],[4,5,6],[7,8,9]]
+        n = len(matrix)
+
+        for i in range(n//2):
+            for j in range(i, n -i - 1):
+                temp = matrix[i][j]
+                matrix[i][j] = matrix[n - j -1][i]
+                matrix[n - j -1][i] = matrix[n - i -1][n - j - 1]
+                matrix[n - i -1][n - j - 1] = matrix[j][n - i -1]
+                matrix[j][n-i-1] = temp
+                return matrix[i][j]
+    print(rotate_image())
+#1886. Determine Whether Matrix Can Be Obtained By Rotation
+    def determine():
+        print('1886. Determine Whether Matrix Can Be Obtained By Rotation')
+        mat = [[0,1],[1,0]]
+        target = [[1,0],[0,1]]
+        n = len(mat)
+
+        if n!= len(target):
+            return False
+        temp = [[0 for x in range(n)] for y in range(n)]
+
+        for i in range(n):
+            for j in range(n):
+                temp[j][n-1-i] = mat[i][j]
+
+        if temp == target:
+            return True
+
+        for i in range(n):
+            for j in range(n):
+                temp[n-1-j][i] = mat[i][j]
+
+        if temp == target:
+            return True
+
+        return False
+    print(determine())
+#15 3Sum
+    def threeSum():
+        print('3Sum')
+        nums = [-1,0,1,2,-1,-4]
+        res =[]
+        nums.sort()
+        for i in range(len(nums)-2):
+            if nums[i] + nums[i+1] +nums[i+2]>0:
+                break
+            if i >0 and nums[i] == nums[i-1]:
+                continue
+            l, r = i+1, len(nums)-1
+            while l <r:
+                s = nums[i]+nums[l]+nums[r]
+                if s <0:
+                    l+=1
+                elif s >0:
+                    r-+1
+                else:
+                    res.append((nums[i], nums[l], nums[r]))
+                    while l < r and nums[l] == nums[l+1]:
+                        l+=1
+                    while l<r and nums[r] == nums[r-1]:
+                        r-=1
+                    l +=1; r -=1
+        return set(res)
+    print(threeSum())
+#844. Backspace String Compare
+    def backspaceCompare():
+        print('844. Backspace String Compare')
+        s = "ab#c"; t = "ad#c"
+        s_stack = []
+        t_stack = []
+
+        for char in s:
+            if char !='#':
+                s_stack.append(char)
+            elif s_stack:
+                s_stack.pop()
+
+        for char in t:
+            if char !='#':
+                t_stack.append(char)
+            elif t_stack:
+                t_stack.pop()
+        return s_stack == t_stack
+    print(backspaceCompare())
+#986. Interval List Intersections
+    def intervallntersection():
+        print('986. Interval List Intersections')
+        firstList = [[0,2],[5,10],[13,23],[24,25]]
+        secondList = [[1,5],[8,12],[15,24],[25,26]]
+        resulr = []
+        i, j =0,0
+
+        while i < len(firstList) and j<len(secondList):
+            a,b = firstList[i]
+            c,d = secondList[j]
+
+            if b>= c and d>=a:
+                start = max(a,c)
+                end = min(b,d)
+                resulr.append([start,end])
+            if b<d:
+                i+=1
+            else:
+                j+=1
+        return resulr
+    print(intervallntersection())
