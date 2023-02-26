@@ -453,6 +453,24 @@ class Node:
         words = ["hello","leetcode"]
         order = "hlabcdefgijkmnopqrstuvwxyz"
         print ("953. Verifying an Alien Dictionary")
+        map = {}
+        for i in range(len(order)):
+            map[order[i]] = i
+        for i in range(1, len(words)):
+            first = words[i - 1]
+            second = words[i]
+            n = min(len(first), len(second))
+            flag = False
+            for j in range(n):
+                if map[first[j]] < map[second[j]]:
+                    flag = True
+                    break
+                elif map[first[j]] > map[second[j]]:
+                    return False
+            if not flag and len(first) > len(second):
+                return False
+        return True
+        """
         order_index = {c: i for i, c in enumerate(order)}
 
         for i in range(len(words)-1):
@@ -468,4 +486,5 @@ class Node:
                 if len(word1)>len(word2):
                     return False
         return True
+        """
     print(isAleanSort())
