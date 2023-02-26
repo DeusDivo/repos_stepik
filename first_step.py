@@ -1,5 +1,6 @@
+from collections import Counter
 #1523. Count Odd Numbers in an Interval Range
-class Solution(object):
+class Solution():
     def countOdds():
         print ("1523. Count Odd Numbers in an Interval Range")
         low = 2
@@ -224,21 +225,6 @@ class Solution(object):
         """
     print(maxAverage())
 #Not rd 589. N-ary Tree Preorder Traversal
-class Node:
-    print("not Rd")
-    def __init__(self, val=None, children=None):
-        self.val = val
-        self.children = children
-    def preorder(self, root: 'Node') -> list[int]:
-        root = [1,0,3,2,4,0,5,6]
-        output = []
-        self.traverse(root, output)
-        return output
-    def traverse(self, root, output):
-        if root is None: return
-        output.append(root.val)
-        for child in root.children:
-            self.traverse(child, output)
     """
     def preorder (root):
         result = []
@@ -489,85 +475,7 @@ class Node:
     print(isAleanSort())
     print(isAleanSort())
 #1290. Convert Binary Number in a Linked List to Integer
-class ListNode:
-    def __init__(self,x):
-        self.val = x
-        self.next = None
-class solution_1290:
-    def getDecima(self,head:ListNode) -> int:
-        print("1290. Convert Binary Number in a Linked List to Integer")
-        head = [1,0,1]
-        decima_value = 0
-        while head != None:
-            decima_value = (decima_value<<1)| head.val
-            head = head.next
-        return decima_value
-"""
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-class LinkedList:
-    def __init__(self):
-        self.head = None
-    def middleNode(self):
-        slow_ptr = self.head
-        fast_ptr = self.head
-
-        if self.head is not None:
-            while (fast_ptr is not None and fast_ptr.next is not None):
-                fast_ptr = fast_ptr.next.next
-                slow_ptr = slow_ptr.next
-            return slow_ptr.data
-"""
 #
-class Node:
-    def __init__(self, val):
-        self.val = val
-        self.next = None
-    def  findMiddleNode(head):
-        slow = head
-        fast = head
-
-        while (fast is not None and fast.next is not None):
-            slow = slow.next
-            fast = fast.next
-            return slow
-        print(slow)
-#
-    def __init__(self) -> None:
-        self.val = val
-        self.left = left
-        self.righ = right
-    def maxDepth():
-        if root is None:
-            return
-        else:
-            lDepth = self.maxDepth(root.left)
-            rDepth = self.maxDepth(root.righ)
-        if (lDepth > rDepth):
-            return lDepth+1
-        else:
-            return rDepth+1
-    def sumofleft():
-        if not root:
-            return 0
-            if root.left and not root.left.left and not root.left.right:
-                return root.left.val +self.sumofleft(root.righ)
-            return self.sumoleft(root.left)+ self.sumofleft(root.right)
- #
-    def sumOfLeftLeaves():
-        root = [3,9,20,null,null,15,7]
-        s, ans = deque([(root, False)]), 0
-        while s:
-            cur, isLeft = s.pop()
-            if not cur.left and not cur.right and isLeft:
-                ans = ans + cur.val
-            if cur.right:
-                s.append((cur.right, False))
-            if cur.left:
-                s.append((cur.left, True))
-        return ans
     def sortByBits():
         arr = [0,1,2,3,4,5,6,7,8]
         return sorted(arr, key = lambda x: (bin(x).count('1'), x))
@@ -1067,4 +975,164 @@ class Node:
         res = []
 
         for i in range(len(l)):
-            sub_arr = sorted(nums[l])
+            sub_arr = sorted(nums[l[i]:r[i]+1])
+            diff = sub_arr[1] - sub_arr[0]
+            flag = True
+
+            for j in range(2, len(sub_arr)):
+                if sub_arr[j] - sub_arr[j-1]!=diff:
+                    flag = False
+                    break
+            res.append(flag)
+
+        return res
+    print(is_airt())
+#429. N-ary Tree Level Order Traversal
+    def levelOrder():
+        print('429. N-ary Tree Level Order Traversal')
+#503. Next Greater Element II
+    def nextGreaterElements():
+        print("503. Next Greater Element II")
+        nums = [1,2,1]
+        stak = []
+        res = [-1]*len(nums)
+
+        for i in range(len(nums)*2):
+            while stak and nums[stak[-1]]<nums[i%len(nums)]:
+                res[stak.pop()]=nums[i%len(nums)]
+            stak.append(i%len(nums))
+        return res
+    print(nextGreaterElements())
+#556. Next Greater Element III
+    def nextGetElement():
+        print('556. Next Greater Element III')
+        n=12
+        digits = [int(d) for d in str(n)]
+
+        i = len(digits) - 1
+        while i>0 and digits[i-1]>=digits[i]:
+            i-=1
+
+        if i == 0:
+            return -1
+
+        j = len(digits)-1
+        while digits[j]<=digits[j-1]:
+            j-=1
+
+        temp = digits[i-1]
+        digits[i-1]=digits[j]
+        digits[j]=temp
+
+        left = i
+        right = len(digits)-1
+
+        while left<right:
+            temp = digits[left]
+            digits[left]=digits[right]
+            digits[right]=temp
+            left +=1
+            right -=1
+
+        return int("".join(str(d) for d in digits))
+    print(nextGetElement())
+#1376. Time Needed to Inform All Employees
+    def numOfminutes():
+        print('1376. Time Needed to Inform All Employees')
+        n = 1
+        headID = 0
+        manager = [-1]
+        informTime = [0]
+        """
+        graph = collections.defaultdict(list)
+        for i in range(n):
+            if manager[i] != -1:
+                graph[manager[i]].append(i)
+
+        # do a BFS to find the longest path from headID to any employee
+        queue = collections.deque([(headID, 0)])
+        max_time = 0
+
+        while queue:
+            node, time = queue.popleft()
+
+            max_time = max(max_time, time)
+
+            for child in graph[node]:
+                queue.append((child, time + informTime[node]))
+
+        return max_time
+        """
+#49. Group Anagrams
+    def groupAnagrams():
+        print('49. Group Anagrams')
+        strs = ['']
+        anagrams = {}
+
+        for word in strs:
+            sorted_word = ''.join(sorted(word))
+            if sorted_word in anagrams:
+                anagrams[sorted_word].append(word)
+            else:
+                anagrams[sorted_word]=[word]
+        return list(anagrams.values())
+    print(groupAnagrams())
+#438. Find All Anagrams in a String
+    def findAllAnagrams():
+        print('438. Find All Anagrams in a String')
+        s = "cbaebabacd"
+        p = "abc"
+        result = []
+        s_len, p_len = len(s), len(p)
+        p_counter = Counter(p)
+        s_counter = Counter(s[:p_len-1])
+        for i in range(p_len-1, s_len):
+            s_counter[s[i]] += 1
+            if s_counter == p_counter:
+                result.append(i-p_len+1)
+
+            s_counter[s[i-p_len+1]] -= 1
+
+            if s_counter[s[i-p_len+1]] == 0:
+                del s_counter[s[i-p_len+1]]
+        return result
+    print(findAllAnagrams())
+#713. Subarray Product Less Than K
+    def subarray():
+        print('713. Subarray Product Less Than K')
+        nums = [10,5,2,6]
+        k = 100
+
+        if k<=1:
+            return 0
+
+        prod = 1
+        ans = left =0
+
+        for right,val in enumerate(nums):
+            prod*=val
+            while prod >=k:
+                prod/=nums[left]
+                left+=1
+            ans+=right-left+1
+        return ans
+    print(subarray())
+#910. Smallest Range II
+    def smallestRange():
+        print('910. Smallest Range II')
+        nums = [1]
+        k = 0
+        nums.sort()
+        # Initialize the minimum score as the difference between the first and last elements
+        min_score = nums[-1] - nums[0]
+        # Iterate over the array
+        for i in range(len(nums) - 1):
+            # Compute the new minimum and maximum values after applying the operation
+            new_min = min(nums[i+1] - k, nums[0] + k)
+            new_max = max(nums[i] + k, nums[-1] - k)
+            # Compute the new score and update the minimum score if necessary
+            new_score = new_max - new_min
+            if new_score < min_score:
+                min_score = new_score
+        return min_score
+    print(smallestRange())
